@@ -17,8 +17,10 @@ public class TP0_Addition {
      */
     public static void main(String[] args) {  
 int nb; // nombre d'entiers à additionner 
-int result; // resultat 
+int result; // resultat a calculer
 int ind; //indice  
+
+
 // initialisation 
 Scanner sc = new Scanner(System.in); 
 System.out.println("Entrer le nombre :");  
