@@ -93,6 +93,6 @@ public class TP1_Convertisseur_LOUBIERE {
         return CelciusVersKelvin(FarenheitVersCelcius(tFarenheit));
     }
 }
-    }
+    
     
 
