@@ -11,84 +11,22 @@ import java.util.ArrayList;
  * @author mloub
  */
 public class FenetreQuiz extends javax.swing.JFrame {
+    private ArrayList<Question> listeQuestions;
+    private int indexQuestionCourante = 0;
+    private int score = 0;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FenetreQuiz.class.getName());
 
     /**
      * Creates new form FenetreQuiz
      */
-     private ArrayList<Question> questions;
-    private int indexQuestionCourante = 0;
-    private int score = 0;
     
+   
     public FenetreQuiz() {
         initComponents();
-        
-       
-        
-        
-
-       
-        questions = new ArrayList<>();
-        questions.add(new Question(
-            "Quel est le plus grand océan du monde ?",
-            "Océan Atlantique", "Océan Pacifique", "Océan Indien", "Océan Arctique", 2));
-        questions.add(new Question(
-            "Quelle est la formule chimique de l’eau ?",
-            "CO₂", "H₂O", "O₂", "NaCl", 2));
-        questions.add(new Question(
-            "En quelle année a eu lieu la prise de la Bastille ?",
-            "1789", "1815", "1776", "1792", 1));
-        questions.add(new Question(
-            "Quel est le pays le plus peuplé au monde ?",
-            "Inde", "États-Unis", "Chine", "Indonésie", 3));
-        questions.add(new Question(
-            "Quelle marque de voitures est-elle allemande ?",
-            "Peugeot", "Cadillac", "Volvo", "Mini", 4));
-
-        
+        initialiserQuestions();
         afficherQuestionCourante();
     }
-
-    private void afficherQuestionCourante() {
-        if (indexQuestionCourante < questions.size()) {
-            Question q = questions.get(indexQuestionCourante);
-
-            lblQuestion.setText(q.getIntitule());
-            btnRep1.setText(q.getProposition1());
-            btnRep2.setText(q.getProposition2());
-            btnRep3.setText(q.getProposition3());
-            btnRep4.setText(q.getProposition4());
-
-            btnRep1.setEnabled(true);
-            btnRep2.setEnabled(true);
-            btnRep3.setEnabled(true);
-            btnRep4.setEnabled(true);
-
-            BonneReponse.setVisible(false);
-            MauvaiseReponse.setVisible(false);
-        }
-    }
-
-    private void verifierReponse(int numeroBouton) {
-        Question q = questions.get(indexQuestionCourante);
-
-        if (numeroBouton == q.getIndexBonneReponse()) {
-            BonneReponse.setVisible(true);
-            MauvaiseReponse.setVisible(false);
-        } else {
-            MauvaiseReponse.setVisible(true);
-            BonneReponse.setVisible(false);
-        }
-
-        btnRep1.setEnabled(false);
-        btnRep2.setEnabled(false);
-        btnRep3.setEnabled(false);
-        btnRep4.setEnabled(false);
-        QuestionSuivante.setEnabled(true);
-        
-        Score.setText("Score:" + score + "/" + (indexQuestionCourante + 1));
-    }   
    
     
 
@@ -106,9 +44,8 @@ public class FenetreQuiz extends javax.swing.JFrame {
         btnRep2 = new javax.swing.JButton();
         btnRep3 = new javax.swing.JButton();
         btnRep4 = new javax.swing.JButton();
-        BonneReponse = new javax.swing.JLabel();
-        MauvaiseReponse = new javax.swing.JLabel();
-        Score = new javax.swing.JLabel();
+        lblFeedback = new javax.swing.JLabel();
+        lblScore = new javax.swing.JLabel();
         QuestionSuivante = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -143,11 +80,9 @@ public class FenetreQuiz extends javax.swing.JFrame {
             }
         });
 
-        BonneReponse.setText("Bonne Réponse");
+        lblFeedback.setText("Bonne Réponse");
 
-        MauvaiseReponse.setText("Mauvaise Réponse");
-
-        Score.setText("Score");
+        lblScore.setText("Score:");
 
         QuestionSuivante.setText("Question suivante");
         QuestionSuivante.addActionListener(new java.awt.event.ActionListener() {
@@ -179,16 +114,15 @@ public class FenetreQuiz extends javax.swing.JFrame {
                         .addContainerGap(95, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Score, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(lblScore, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(BonneReponse)
+                        .addComponent(lblFeedback)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(MauvaiseReponse)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 252, Short.MAX_VALUE)
                         .addComponent(QuestionSuivante)
                         .addGap(18, 18, 18))))
         );
@@ -199,7 +133,7 @@ public class FenetreQuiz extends javax.swing.JFrame {
                     .addComponent(lblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(Score)))
+                        .addComponent(lblScore)))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRep1)
@@ -209,11 +143,9 @@ public class FenetreQuiz extends javax.swing.JFrame {
                     .addComponent(btnRep4)
                     .addComponent(btnRep2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
-                .addComponent(BonneReponse)
+                .addComponent(lblFeedback)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MauvaiseReponse)
-                    .addComponent(QuestionSuivante))
+                .addComponent(QuestionSuivante)
                 .addGap(15, 15, 15))
         );
 
@@ -242,14 +174,14 @@ public class FenetreQuiz extends javax.swing.JFrame {
 
     private void QuestionSuivanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuestionSuivanteActionPerformed
         indexQuestionCourante++;
-        if(indexQuestionCourante < questions.size()){
+        if (indexQuestionCourante < listeQuestions.size()) {
             afficherQuestionCourante();
-        }else{
-            lblQuestion.setText(" fin du quizz" );
-        
-            
+        } else {
+            lblQuestion.setText("FIN DU QUIZ !");
+            lblFeedback.setText("Quiz terminé. Score final : " + score + " / " + listeQuestions.size());
+            QuestionSuivante.setEnabled(false);
+            lblScore.setText("Score final : " + score + " / " + listeQuestions.size());
         }
-        
     }//GEN-LAST:event_QuestionSuivanteActionPerformed
 
     /**
@@ -278,14 +210,86 @@ public class FenetreQuiz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel BonneReponse;
-    private javax.swing.JLabel MauvaiseReponse;
     private javax.swing.JButton QuestionSuivante;
-    private javax.swing.JLabel Score;
     private javax.swing.JButton btnRep1;
     private javax.swing.JButton btnRep2;
     private javax.swing.JButton btnRep3;
     private javax.swing.JButton btnRep4;
+    private javax.swing.JLabel lblFeedback;
     private javax.swing.JLabel lblQuestion;
+    private javax.swing.JLabel lblScore;
     // End of variables declaration//GEN-END:variables
+
+    private void initialiserQuestions() {
+        listeQuestions = new ArrayList<>();
+        
+        listeQuestions.add(new Question(
+            "Quel est le plus grand océan du monde ?",
+            "Océan Atlantique", "Océan Pacifique", "Océan Indien", "Océan Arctique", 2));
+        listeQuestions.add(new Question(
+            "Quelle est la formule chimique de l’eau ?",
+            "CO₂", "H₂O", "O₂", "NaCl", 2));
+        listeQuestions.add(new Question(
+            "En quelle année a eu lieu la prise de la Bastille ?",
+            "1789", "1815", "1776", "1792", 1));
+        listeQuestions.add(new Question(
+            "Quel est le pays le plus peuplé au monde ?",
+            "Inde", "États-Unis", "Chine", "Indonésie", 3));
+        listeQuestions.add(new Question(
+            "Quelle marque de voitures est-elle allemande ?",
+            "Peugeot", "Cadillac", "Volvo", "Mini", 4));
+
+    }
+
+    private void afficherQuestionCourante() {
+    if (indexQuestionCourante < listeQuestions.size()) {
+        Question question = listeQuestions.get(indexQuestionCourante); // <-- On affiche SEULEMENT si l'index est valide
+
+        lblQuestion.setText(question.getIntitule());
+        
+        btnRep1.setText(question.getProposition1());
+        btnRep2.setText(question.getProposition2());
+        btnRep3.setText(question.getProposition3());
+        btnRep4.setText(question.getProposition4());
+
+        btnRep1.setEnabled(true);
+        btnRep2.setEnabled(true);
+        btnRep3.setEnabled(true);
+        btnRep4.setEnabled(true);
+
+        QuestionSuivante.setEnabled(false);
+        
+        lblFeedback.setText("Choisissez une réponse...");
+        // Mettre à jour le score initial
+        lblScore.setText("Score : " + score + " / " + listeQuestions.size());
+    } else {
+        // Logique de fin de quiz, au cas où cette méthode est appelée lorsque le quiz est déjà terminé
+        lblQuestion.setText("FIN DU QUIZ !");
+        lblFeedback.setText("Quiz terminé. Score final : " + score + " / " + listeQuestions.size());
+        QuestionSuivante.setEnabled(false);
+        lblScore.setText("Score final : " + score + " / " + listeQuestions.size());
+
+    }
+    }
+
+    private void verifierReponse(int reponseChoisie) {
+        Question questionCourante = listeQuestions.get(indexQuestionCourante);
+
+         if (reponseChoisie == questionCourante.getIndexBonneReponse()) {
+            lblFeedback.setText("Bonne réponse !!");
+            score++;
+        } else {
+            lblFeedback.setText("Mauvaise réponse. La bonne réponse était la proposition " + questionCourante.getIndexBonneReponse() + ".");
+            
+        }
+
+        btnRep1.setEnabled(false);
+        btnRep2.setEnabled(false);
+        btnRep3.setEnabled(false);
+        btnRep4.setEnabled(false);
+        
+        QuestionSuivante.setEnabled(true);
+        
+        lblScore.setText("Score:" + score + "/" + (indexQuestionCourante + 1));
+    }   
 }
