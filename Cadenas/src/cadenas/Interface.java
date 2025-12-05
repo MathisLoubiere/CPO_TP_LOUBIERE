@@ -29,18 +29,6 @@ public class Interface extends javax.swing.JFrame {
     private void initComponents() {
 
         texte_Intro = new javax.swing.JLabel();
-        down_chiffre1 = new javax.swing.JButton();
-        down_chiffre2 = new javax.swing.JButton();
-        down_chiffre3 = new javax.swing.JButton();
-        down_chiffre4 = new javax.swing.JButton();
-        up_chiffre1 = new javax.swing.JButton();
-        up_chiffre2 = new javax.swing.JButton();
-        up_chiffre3 = new javax.swing.JButton();
-        up_chiffre4 = new javax.swing.JButton();
-        chiffre1 = new javax.swing.JLabel();
-        chiffre2 = new javax.swing.JLabel();
-        chiffre3 = new javax.swing.JLabel();
-        chiffre4 = new javax.swing.JLabel();
         Tester = new javax.swing.JButton();
         txt_lbl_nb_chiffre_exact = new javax.swing.JLabel();
         txt_nb_chiffre_exact = new javax.swing.JLabel();
@@ -51,203 +39,120 @@ public class Interface extends javax.swing.JFrame {
         txt_score = new javax.swing.JLabel();
         txt_tentatives = new javax.swing.JLabel();
         recommencer = new javax.swing.JButton();
+        up_chiffre4 = new javax.swing.JButton();
+        chiffre1 = new javax.swing.JLabel();
+        up_chiffre1 = new javax.swing.JButton();
+        down_chiffre2 = new javax.swing.JButton();
+        up_chiffre2 = new javax.swing.JButton();
+        chiffre4 = new javax.swing.JLabel();
+        down_chiffre4 = new javax.swing.JButton();
+        down_chiffre1 = new javax.swing.JButton();
+        chiffre2 = new javax.swing.JLabel();
+        up_chiffre3 = new javax.swing.JButton();
+        chiffre3 = new javax.swing.JLabel();
+        down_chiffre3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(new java.awt.Color(102, 51, 255));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         texte_Intro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         texte_Intro.setText("Trouver le bon code en moins de 5 tentatives");
+        getContentPane().add(texte_Intro, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 14, 307, -1));
 
-        down_chiffre1.setText("\\/");
+        Tester.setText("Tester");
+        getContentPane().add(Tester, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 120, -1, -1));
 
-        down_chiffre2.setText("\\/");
-        down_chiffre2.addActionListener(new java.awt.event.ActionListener() {
+        txt_lbl_nb_chiffre_exact.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        txt_lbl_nb_chiffre_exact.setText("Nombre de chiffres exacts :");
+        getContentPane().add(txt_lbl_nb_chiffre_exact, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 186, 154, -1));
+
+        txt_nb_chiffre_exact.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_nb_chiffre_exact.setText("0");
+        getContentPane().add(txt_nb_chiffre_exact, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 186, 33, -1));
+
+        txt_lbl_nb_chiffre_trop_haut.setText("Nombre de chiffres trop hauts :");
+        getContentPane().add(txt_lbl_nb_chiffre_trop_haut, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 222, 184, -1));
+
+        txt_nb_chiffre_trop_haut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_nb_chiffre_trop_haut.setText("0");
+        getContentPane().add(txt_nb_chiffre_trop_haut, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 222, 59, -1));
+
+        txt_lbl_nb_chiffre_trop_bas.setText("Nombre de chiffres trop bas :");
+        getContentPane().add(txt_lbl_nb_chiffre_trop_bas, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 256, 173, -1));
+
+        txt_nb_chiffre_trop_bas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_nb_chiffre_trop_bas.setText("0");
+        getContentPane().add(txt_nb_chiffre_trop_bas, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 256, 37, -1));
+
+        txt_score.setFont(new java.awt.Font("Viner Hand ITC", 1, 24)); // NOI18N
+        txt_score.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_score.setText("0/5");
+        getContentPane().add(txt_score, new org.netbeans.lib.awtextra.AbsoluteConstraints(447, 244, 72, 30));
+
+        txt_tentatives.setText("Tentatives");
+        getContentPane().add(txt_tentatives, new org.netbeans.lib.awtextra.AbsoluteConstraints(447, 194, 92, -1));
+
+        recommencer.setBackground(new java.awt.Color(0, 102, 102));
+        recommencer.setForeground(new java.awt.Color(255, 255, 255));
+        recommencer.setText("Recommencer");
+        recommencer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                down_chiffre2ActionPerformed(evt);
+                recommencerActionPerformed(evt);
             }
         });
+        getContentPane().add(recommencer, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 280, -1, -1));
 
-        down_chiffre3.setText("\\/");
+        up_chiffre4.setText("/\\");
+            getContentPane().add(up_chiffre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 53, 46));
 
-        down_chiffre4.setText("\\/");
+            chiffre1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+            chiffre1.setText("0");
+            getContentPane().add(chiffre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 53, 46));
 
-        up_chiffre1.setText("/\\");
+            up_chiffre1.setText("/\\");
+                getContentPane().add(up_chiffre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 53, 46));
 
-            up_chiffre2.setText("/\\");
+                down_chiffre2.setText("\\/");
+                down_chiffre2.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        down_chiffre2ActionPerformed(evt);
+                    }
+                });
+                getContentPane().add(down_chiffre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 73, 46));
 
-                up_chiffre3.setText("/\\");
+                up_chiffre2.setText("/\\");
+                    getContentPane().add(up_chiffre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 73, 46));
 
-                    up_chiffre4.setText("/\\");
+                    chiffre4.setBackground(new java.awt.Color(255, 255, 255));
+                    chiffre4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                    chiffre4.setText("0");
+                    chiffre4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 102, 51), new java.awt.Color(0, 102, 51), new java.awt.Color(0, 102, 51), new java.awt.Color(0, 102, 51)));
+                    getContentPane().add(chiffre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 73, 46));
 
-                        chiffre1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                        chiffre1.setText("0");
+                    down_chiffre4.setBackground(new java.awt.Color(0, 102, 102));
+                    down_chiffre4.setText("\\/");
+                    getContentPane().add(down_chiffre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 70, 40));
 
-                        chiffre2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                        chiffre2.setText("0");
+                    down_chiffre1.setText("\\/");
+                    getContentPane().add(down_chiffre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 112, 46));
 
+                    chiffre2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                    chiffre2.setText("0");
+                    getContentPane().add(chiffre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 112, 46));
+
+                    up_chiffre3.setText("/\\");
+                        getContentPane().add(up_chiffre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 40, 30));
+
+                        chiffre3.setBackground(new java.awt.Color(255, 204, 204));
+                        chiffre3.setForeground(new java.awt.Color(255, 204, 204));
                         chiffre3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                         chiffre3.setText("0");
+                        chiffre3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 255, 204), new java.awt.Color(255, 255, 204), new java.awt.Color(255, 255, 204), new java.awt.Color(255, 255, 204)));
+                        getContentPane().add(chiffre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 60, 30));
 
-                        chiffre4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                        chiffre4.setText("0");
-
-                        Tester.setText("Tester");
-
-                        txt_lbl_nb_chiffre_exact.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-                        txt_lbl_nb_chiffre_exact.setText("Nombre de chiffres exacts :");
-
-                        txt_nb_chiffre_exact.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                        txt_nb_chiffre_exact.setText("0");
-
-                        txt_lbl_nb_chiffre_trop_haut.setText("Nombre de chiffres trop hauts :");
-
-                        txt_nb_chiffre_trop_haut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                        txt_nb_chiffre_trop_haut.setText("0");
-
-                        txt_lbl_nb_chiffre_trop_bas.setText("Nombre de chiffres trop bas :");
-
-                        txt_nb_chiffre_trop_bas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                        txt_nb_chiffre_trop_bas.setText("0");
-
-                        txt_score.setFont(new java.awt.Font("Viner Hand ITC", 1, 24)); // NOI18N
-                        txt_score.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                        txt_score.setText("0/5");
-
-                        txt_tentatives.setText("Tentatives");
-
-                        recommencer.setBackground(new java.awt.Color(0, 102, 102));
-                        recommencer.setForeground(new java.awt.Color(255, 255, 255));
-                        recommencer.setText("Recommencer");
-                        recommencer.addActionListener(new java.awt.event.ActionListener() {
-                            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                recommencerActionPerformed(evt);
-                            }
-                        });
-
-                        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-                        getContentPane().setLayout(layout);
-                        layout.setHorizontalGroup(
-                            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(96, 96, 96)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(down_chiffre1)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(down_chiffre2)
-                                                        .addGap(12, 12, 12)
-                                                        .addComponent(down_chiffre3))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(up_chiffre1)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(up_chiffre2)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(up_chiffre3)))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(down_chiffre4)
-                                                        .addGap(47, 47, 47)
-                                                        .addComponent(Tester))
-                                                    .addComponent(up_chiffre4)))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addGap(87, 87, 87)
-                                                .addComponent(texte_Intro, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(139, 139, 139)))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addContainerGap()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                    .addComponent(txt_lbl_nb_chiffre_trop_bas, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(28, 28, 28)
-                                                    .addComponent(txt_nb_chiffre_trop_bas, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(0, 0, Short.MAX_VALUE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                            .addComponent(txt_lbl_nb_chiffre_exact, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addGap(48, 48, 48)
-                                                            .addComponent(txt_nb_chiffre_exact, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                            .addComponent(txt_lbl_nb_chiffre_trop_haut, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                            .addComponent(txt_nb_chiffre_trop_haut, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(txt_tentatives, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(txt_score, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(0, 0, Short.MAX_VALUE)
-                                                    .addComponent(recommencer)))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(113, 113, 113)
-                                        .addComponent(chiffre1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(46, 46, 46)
-                                        .addComponent(chiffre2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(47, 47, 47)
-                                        .addComponent(chiffre3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(49, 49, 49)
-                                        .addComponent(chiffre4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(52, Short.MAX_VALUE))
-                        );
-                        layout.setVerticalGroup(
-                            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(texte_Intro)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(up_chiffre1)
-                                    .addComponent(up_chiffre2)
-                                    .addComponent(up_chiffre3)
-                                    .addComponent(up_chiffre4))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(27, 27, 27)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(chiffre3)
-                                            .addComponent(chiffre4)
-                                            .addComponent(chiffre2)
-                                            .addComponent(chiffre1))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(Tester))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(15, 15, 15)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(down_chiffre4)
-                                                    .addComponent(down_chiffre3)
-                                                    .addComponent(down_chiffre2)
-                                                    .addComponent(down_chiffre1))))
-                                        .addGap(34, 34, 34)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(txt_lbl_nb_chiffre_exact)
-                                            .addComponent(txt_nb_chiffre_exact)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(123, 123, 123)
-                                        .addComponent(txt_tentatives)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(txt_lbl_nb_chiffre_trop_haut)
-                                            .addComponent(txt_nb_chiffre_trop_haut))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(txt_lbl_nb_chiffre_trop_bas)
-                                            .addComponent(txt_nb_chiffre_trop_bas)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(34, 34, 34)
-                                        .addComponent(txt_score, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(recommencer)
-                                .addContainerGap())
-                        );
+                        down_chiffre3.setText("\\/");
+                        getContentPane().add(down_chiffre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 80, 40));
 
                         pack();
                     }// </editor-fold>//GEN-END:initComponents
