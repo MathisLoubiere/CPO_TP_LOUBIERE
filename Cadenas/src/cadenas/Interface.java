@@ -1,9 +1,13 @@
+package cadenas;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package cadenas;
 
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import java.util.logging.Level;
 /**
  *
  * @author mloub
@@ -15,10 +19,10 @@ public class Interface extends javax.swing.JFrame {
     /**
      * Creates new form Interface
      */
-    public Interface() {
-        initComponents();
-    }
+        
 
+   
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,62 +60,77 @@ public class Interface extends javax.swing.JFrame {
         setBackground(new java.awt.Color(102, 51, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        texte_Intro.setFont(new java.awt.Font("Gill Sans Nova Ultra Bold", 1, 18)); // NOI18N
         texte_Intro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         texte_Intro.setText("Trouver le bon code en moins de 5 tentatives");
-        getContentPane().add(texte_Intro, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 14, 307, -1));
+        texte_Intro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255), 3));
+        getContentPane().add(texte_Intro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 570, -1));
 
+        Tester.setFont(new java.awt.Font("Vivaldi", 0, 12)); // NOI18N
         Tester.setText("Tester");
-        getContentPane().add(Tester, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 120, -1, -1));
+        getContentPane().add(Tester, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 100, 50));
 
         txt_lbl_nb_chiffre_exact.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         txt_lbl_nb_chiffre_exact.setText("Nombre de chiffres exacts :");
-        getContentPane().add(txt_lbl_nb_chiffre_exact, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 186, 154, -1));
+        getContentPane().add(txt_lbl_nb_chiffre_exact, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 154, -1));
 
         txt_nb_chiffre_exact.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txt_nb_chiffre_exact.setText("0");
-        getContentPane().add(txt_nb_chiffre_exact, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 186, 33, -1));
+        getContentPane().add(txt_nb_chiffre_exact, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 33, -1));
 
         txt_lbl_nb_chiffre_trop_haut.setText("Nombre de chiffres trop hauts :");
-        getContentPane().add(txt_lbl_nb_chiffre_trop_haut, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 222, 184, -1));
+        getContentPane().add(txt_lbl_nb_chiffre_trop_haut, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 184, -1));
 
         txt_nb_chiffre_trop_haut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txt_nb_chiffre_trop_haut.setText("0");
-        getContentPane().add(txt_nb_chiffre_trop_haut, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 222, 59, -1));
+        getContentPane().add(txt_nb_chiffre_trop_haut, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 40, 20));
 
         txt_lbl_nb_chiffre_trop_bas.setText("Nombre de chiffres trop bas :");
-        getContentPane().add(txt_lbl_nb_chiffre_trop_bas, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 256, 173, -1));
+        getContentPane().add(txt_lbl_nb_chiffre_trop_bas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 173, -1));
 
         txt_nb_chiffre_trop_bas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txt_nb_chiffre_trop_bas.setText("0");
-        getContentPane().add(txt_nb_chiffre_trop_bas, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 256, 37, -1));
+        getContentPane().add(txt_nb_chiffre_trop_bas, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 40, 20));
 
         txt_score.setFont(new java.awt.Font("Viner Hand ITC", 1, 24)); // NOI18N
         txt_score.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txt_score.setText("0/5");
-        getContentPane().add(txt_score, new org.netbeans.lib.awtextra.AbsoluteConstraints(447, 244, 72, 30));
+        txt_score.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 102), 3));
+        getContentPane().add(txt_score, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 72, 30));
 
+        txt_tentatives.setFont(new java.awt.Font("Vivaldi", 1, 18)); // NOI18N
         txt_tentatives.setText("Tentatives");
-        getContentPane().add(txt_tentatives, new org.netbeans.lib.awtextra.AbsoluteConstraints(447, 194, 92, -1));
+        getContentPane().add(txt_tentatives, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, 90, -1));
 
-        recommencer.setBackground(new java.awt.Color(0, 102, 102));
-        recommencer.setForeground(new java.awt.Color(255, 255, 255));
+        recommencer.setFont(new java.awt.Font("Vivaldi", 1, 14)); // NOI18N
         recommencer.setText("Recommencer");
         recommencer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 recommencerActionPerformed(evt);
             }
         });
-        getContentPane().add(recommencer, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 280, -1, -1));
+        getContentPane().add(recommencer, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, 120, 30));
 
         up_chiffre4.setText("/\\");
-            getContentPane().add(up_chiffre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 53, 46));
+            up_chiffre4.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    up_chiffre4ActionPerformed(evt);
+                }
+            });
+            getContentPane().add(up_chiffre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 60, 40));
 
             chiffre1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             chiffre1.setText("0");
-            getContentPane().add(chiffre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 53, 46));
+            chiffre1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+            getContentPane().add(chiffre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 60, 40));
 
             up_chiffre1.setText("/\\");
-                getContentPane().add(up_chiffre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 53, 46));
+                up_chiffre1.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        up_chiffre1ActionPerformed(evt);
+                    }
+                });
+                getContentPane().add(up_chiffre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 60, 40));
 
                 down_chiffre2.setText("\\/");
                 down_chiffre2.addActionListener(new java.awt.event.ActionListener() {
@@ -119,51 +138,102 @@ public class Interface extends javax.swing.JFrame {
                         down_chiffre2ActionPerformed(evt);
                     }
                 });
-                getContentPane().add(down_chiffre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 73, 46));
+                getContentPane().add(down_chiffre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 60, 40));
 
                 up_chiffre2.setText("/\\");
-                    getContentPane().add(up_chiffre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 73, 46));
+                    up_chiffre2.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            up_chiffre2ActionPerformed(evt);
+                        }
+                    });
+                    getContentPane().add(up_chiffre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 60, 40));
 
-                    chiffre4.setBackground(new java.awt.Color(255, 255, 255));
                     chiffre4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                     chiffre4.setText("0");
-                    chiffre4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 102, 51), new java.awt.Color(0, 102, 51), new java.awt.Color(0, 102, 51), new java.awt.Color(0, 102, 51)));
-                    getContentPane().add(chiffre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 73, 46));
+                    chiffre4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+                    getContentPane().add(chiffre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 60, 40));
 
-                    down_chiffre4.setBackground(new java.awt.Color(0, 102, 102));
                     down_chiffre4.setText("\\/");
-                    getContentPane().add(down_chiffre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 70, 40));
+                    down_chiffre4.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            down_chiffre4ActionPerformed(evt);
+                        }
+                    });
+                    getContentPane().add(down_chiffre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 60, 40));
 
                     down_chiffre1.setText("\\/");
-                    getContentPane().add(down_chiffre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 112, 46));
+                    down_chiffre1.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            down_chiffre1ActionPerformed(evt);
+                        }
+                    });
+                    getContentPane().add(down_chiffre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 60, 40));
 
                     chiffre2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                     chiffre2.setText("0");
-                    getContentPane().add(chiffre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 112, 46));
+                    chiffre2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+                    getContentPane().add(chiffre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 60, 40));
 
                     up_chiffre3.setText("/\\");
-                        getContentPane().add(up_chiffre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 40, 30));
+                        up_chiffre3.addActionListener(new java.awt.event.ActionListener() {
+                            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                up_chiffre3ActionPerformed(evt);
+                            }
+                        });
+                        getContentPane().add(up_chiffre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 60, 40));
 
-                        chiffre3.setBackground(new java.awt.Color(255, 204, 204));
-                        chiffre3.setForeground(new java.awt.Color(255, 204, 204));
                         chiffre3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                         chiffre3.setText("0");
-                        chiffre3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 255, 204), new java.awt.Color(255, 255, 204), new java.awt.Color(255, 255, 204), new java.awt.Color(255, 255, 204)));
-                        getContentPane().add(chiffre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 60, 30));
+                        chiffre3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, java.awt.Color.black, java.awt.Color.black));
+                        getContentPane().add(chiffre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 60, 40));
 
                         down_chiffre3.setText("\\/");
-                        getContentPane().add(down_chiffre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 80, 40));
+                        down_chiffre3.addActionListener(new java.awt.event.ActionListener() {
+                            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                down_chiffre3ActionPerformed(evt);
+                            }
+                        });
+                        getContentPane().add(down_chiffre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 60, 40));
 
                         pack();
                     }// </editor-fold>//GEN-END:initComponents
 
     private void down_chiffre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre2ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_down_chiffre2ActionPerformed
 
     private void recommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recommencerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_recommencerActionPerformed
+
+    private void down_chiffre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre1ActionPerformed
+        
+    }//GEN-LAST:event_down_chiffre1ActionPerformed
+
+    private void up_chiffre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre1ActionPerformed
+        
+        
+    }//GEN-LAST:event_up_chiffre1ActionPerformed
+
+    private void up_chiffre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre3ActionPerformed
+        
+    }//GEN-LAST:event_up_chiffre3ActionPerformed
+
+    private void down_chiffre4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre4ActionPerformed
+        
+    }//GEN-LAST:event_down_chiffre4ActionPerformed
+
+    private void up_chiffre4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre4ActionPerformed
+        
+    }//GEN-LAST:event_up_chiffre4ActionPerformed
+
+    private void up_chiffre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre2ActionPerformed
+        
+    }//GEN-LAST:event_up_chiffre2ActionPerformed
+
+    private void down_chiffre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre3ActionPerformed
+        
+    }//GEN-LAST:event_down_chiffre3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,10 +255,8 @@ public class Interface extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Interface().setVisible(true));
-    }
+         
+        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Tester;
