@@ -88,6 +88,11 @@ public class Interface extends javax.swing.JFrame {
         getContentPane().add(texte_Intro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 570, -1));
 
         Tester.setText("Tester");
+        Tester.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TesterActionPerformed(evt);
+            }
+        });
         getContentPane().add(Tester, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 100, 50));
 
         txt_lbl_nb_chiffre_exact.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -223,7 +228,20 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_down_chiffre2ActionPerformed
 
     private void recommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recommencerActionPerformed
-        // TODO add your handling code here:
+        jeu.démarrerJeu();
+
+        chiffre1.setText("0");
+        chiffre2.setText("0");
+        chiffre3.setText("0");
+        chiffre4.setText("0");
+
+        txt_nb_chiffre_exact.setText("0");
+        txt_nb_chiffre_trop_haut.setText("0");
+        txt_nb_chiffre_trop_bas.setText("0");
+
+        txt_score.setText(jeu.getTentativesEffectuees() + " sur " + jeu.getMaxTentatives());
+       
+        Tester.setEnabled(true);
     }//GEN-LAST:event_recommencerActionPerformed
 
     private void down_chiffre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre1ActionPerformed
@@ -254,6 +272,42 @@ public class Interface extends javax.swing.JFrame {
     private void down_chiffre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre3ActionPerformed
         mettreAJourChiffre(chiffre3, false);
     }//GEN-LAST:event_down_chiffre3ActionPerformed
+
+    private void TesterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TesterActionPerformed
+        if (jeu.estPartieTerminee()) {
+            return;
+        }
+
+        int[] essai = new int[4];
+        try {
+            essai[0] = Integer.parseInt(chiffre1.getText());
+            essai[1] = Integer.parseInt(chiffre2.getText());
+            essai[2] = Integer.parseInt(chiffre3.getText());
+            essai[3] = Integer.parseInt(chiffre4.getText());
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Erreur: Les chiffres ne sont pas au format attendu.", "Erreur", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int[] resultats = jeu.testerCombinaison(essai);
+        txt_nb_chiffre_exact.setText(String.valueOf(resultats[0]));
+        txt_nb_chiffre_trop_haut.setText(String.valueOf(resultats[1]));
+        txt_nb_chiffre_trop_bas.setText(String.valueOf(resultats[2]));
+        txt_score.setText(jeu.getTentativesEffectuees() + " sur " + jeu.getMaxTentatives());
+
+        if (jeu.estPartieTerminee()) {
+            Tester.setEnabled(false);
+            String message;
+            if (jeu.estGagne()) {
+                message = "Bien joué : " + jeu.getCodeSecretString();
+            } else {
+                message = "Perdu le code secret était : " + jeu.getCodeSecretString();
+            }
+            JOptionPane.showMessageDialog(this, message, "Fin de partie", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_TesterActionPerformed
+
 
     /**
      * @param args the command line arguments
