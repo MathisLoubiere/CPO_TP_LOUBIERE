@@ -13,12 +13,33 @@ import java.util.logging.Level;
  * @author mloub
  */
 public class Interface extends javax.swing.JFrame {
-    
+    private Cadenas jeu;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Interface.class.getName());
 
-    /**
-     * Creates new form Interface
-     */
+    public Interface() {
+        initComponents();
+        jeu = new Cadenas();
+        txt_score.setText(jeu.getTentativesEffectuees() + " sur " + jeu.getMaxTentatives());
+        texte_Intro.setText("Trouvez le bon code en moins de " + jeu.getMaxTentatives() + " tentatives !");
+    }
+   
+    private void mettreAJourChiffre(javax.swing.JLabel label, boolean increment) {
+        if (jeu.estPartieTerminee()) {
+            return;
+        }
+       
+        try {
+            int chiffre = Integer.parseInt(label.getText());
+            if (increment) {
+                chiffre = (chiffre + 1) % 10;
+            } else {
+                chiffre = (chiffre - 1 + 10) % 10;
+            }
+            label.setText(String.valueOf(chiffre));
+        } catch (NumberFormatException e) {
+            label.setText("0");
+        }
+    }
         
 
    
@@ -66,7 +87,6 @@ public class Interface extends javax.swing.JFrame {
         texte_Intro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 204, 255), 3));
         getContentPane().add(texte_Intro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 570, -1));
 
-        Tester.setFont(new java.awt.Font("Vivaldi", 0, 12)); // NOI18N
         Tester.setText("Tester");
         getContentPane().add(Tester, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 100, 50));
 
@@ -96,7 +116,7 @@ public class Interface extends javax.swing.JFrame {
         txt_score.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txt_score.setText("0/5");
         txt_score.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 102), 3));
-        getContentPane().add(txt_score, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 72, 30));
+        getContentPane().add(txt_score, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 90, 30));
 
         txt_tentatives.setFont(new java.awt.Font("Vivaldi", 1, 18)); // NOI18N
         txt_tentatives.setText("Tentatives");
@@ -199,7 +219,7 @@ public class Interface extends javax.swing.JFrame {
                     }// </editor-fold>//GEN-END:initComponents
 
     private void down_chiffre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre2ActionPerformed
-        
+        mettreAJourChiffre(chiffre2, false);
     }//GEN-LAST:event_down_chiffre2ActionPerformed
 
     private void recommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recommencerActionPerformed
@@ -207,42 +227,43 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_recommencerActionPerformed
 
     private void down_chiffre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre1ActionPerformed
-        
+        mettreAJourChiffre(chiffre1, false);
     }//GEN-LAST:event_down_chiffre1ActionPerformed
 
     private void up_chiffre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre1ActionPerformed
-        
+        mettreAJourChiffre(chiffre1, true);
         
     }//GEN-LAST:event_up_chiffre1ActionPerformed
 
     private void up_chiffre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre3ActionPerformed
-        
+        mettreAJourChiffre(chiffre3, true);
     }//GEN-LAST:event_up_chiffre3ActionPerformed
 
     private void down_chiffre4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre4ActionPerformed
-        
+        mettreAJourChiffre(chiffre4, false);
     }//GEN-LAST:event_down_chiffre4ActionPerformed
 
     private void up_chiffre4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre4ActionPerformed
-        
+        mettreAJourChiffre(chiffre4, true);
     }//GEN-LAST:event_up_chiffre4ActionPerformed
 
     private void up_chiffre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre2ActionPerformed
-        
+        mettreAJourChiffre(chiffre2, true);
     }//GEN-LAST:event_up_chiffre2ActionPerformed
 
     private void down_chiffre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre3ActionPerformed
-        
+        mettreAJourChiffre(chiffre3, false);
     }//GEN-LAST:event_down_chiffre3ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    
+public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -255,6 +276,19 @@ public class Interface extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        }catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(Level.SEVERE, null, ex);
+        }
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> new Interface().setVisible(true));
+    }
          
         
 
